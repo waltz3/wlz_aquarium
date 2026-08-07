@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水槽の記録</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 本の見開き全体を包むコンテナ -->
+  <div class="book-spread">
+    
+    <!-- 左ページ：メイン画像とタイトル -->
+    <section class="page left-page">
+      <div class="illustration-container">
+        <!-- マンボウ等のスケッチ画像を入れるエリア -->
+        <img src="images/hero-mambo.jpg" alt="マンボウスケッチ" class="hero-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="sketch-placeholder">
+          <span>[ SKETCH AREA ]</span>
+        </div>
+      </div>
+      
+      <div class="title-container">
+        <h1 class="site-title">水槽の記録</h1>
+        
+      </div>
+    </section>
+
+    <!-- 右ページ：検索・ナビゲーション・バーコード -->
+    <section class="page right-page">
+      <p class="site-subtitle" style="white-space: pre-line;">水族館の生物と
+        水槽展示に関する
+        観察記録</p>
+      <!-- 検索ボックス -->
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="検索（水槽、魚種、館名...）" autocomplete="off">
+      </div>
+
+      <!-- メインナビゲーション -->
+      <nav class="navigation">
+        <ul class="nav-list">
+          <li>
+            <a href="species.html" class="nav-item">
+              <span class="arrow">➢</span> 生き物から見る
+            </a>
+          </li>
+          <li>
+            <a href="map.html" class="nav-item">
+              <span class="arrow">➢</span> 地図から見る
+            </a>
+          </li>
+          <li>
+            <a href="archive.html" class="nav-item">
+              <span class="arrow">➢</span> なんでもいいから見る
+            </a>
+          </li>
+          <li>
+            <a href="about.html" class="nav-item">
+              <span class="arrow">➢</span> ABOUT
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 右下のバーコード装飾 -->
+      <div class="barcode-wrapper">
+        <div class="barcode-bars"></div>
+        <div class="barcode-number">NO. 8049-2026-AQUATIC</div>
+      </div>
+
+    </section>
+
+  </div>
+
+</body>
+</html>
