@@ -27,40 +27,76 @@ body {
 }
 
 /* ==========================================
-   見開きレイアウト (PC: 左右並び / スマホ: 縦並び)
+   見開きレイアウト（縦横比固定 ＆ 限界幅で折り返し）
    ========================================== */
+
+/* 全体を包む本（2ページ分）の枠組み */
 .book-spread {
-  width: 100%;
-  max-width: 1100px;
-  min-height: 80vh;
-  margin: 2rem;
-  padding: 2rem;
   display: flex;
-  flex-direction: column; /* スマホ用：デフォルトは縦並び */
-  gap: 3rem;
-  border: 1px solid rgba(0, 0, 0, 0.08); /* ほのかな本のエッジ */
-  background-color: #fcfbf7;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap; /* 画面幅が狭くなったら自動で下に落ちる（縦並び） */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px; /* 全体の最大幅 */
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
-/* PC（768px以上）で見開き左右2カラム化 */
-@media (min-width: 768px) {
+/* 1ページあたりの共通設定 */
+.page {
+  /* 右ページは内容に合わせて高さを伸ばせるようにし、左ページだけ比率を固定する */
+  flex: 0 1 380px;
+  max-width: 500px; /* 1ページが大きくなりすぎないように制限 */
+
+  /* background-color: #fcfbf7; */
+  /* border: 1px solid var(--border-line); */
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 縦方向に均等配置 */
+  overflow: hidden; /* 内容が溢れて比率が崩れるのを防ぐ */
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); */
+}
+
+/* 左ページ特有のスタイル */
+.left-page {
+  aspect-ratio: 1 / 1.414;
+  flex: 0 0 auto;
+  width: min(100%, 500px);
+  /* PCで並んだ時に本の中央に少し影を落とす */
+  /* box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.08); */
+}
+
+/* 右ページ特有のスタイル */
+.right-page {
+  position: relative;
+  flex: 1 1 320px;
+}
+
+/* スケッチ画像の表示領域 */
+.illustration-container {
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+}
+
+/* 画面が小さくて縦並び（スマホ）になった際の調整 */
+@media (max-width: 820px) {
   .book-spread {
-    flex-direction: row;
-    gap: 4rem;
-    padding: 3.5rem;
+    gap: 1.5rem;
   }
-
   .page {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    /* スマホ表示時は画面幅いっぱいに広げる */
+    max-width: min(100%, 500px);
+    flex-basis: 100%;
   }
 
-  /* 中央の書籍の綴じ目（スジ）演出 */
   .left-page {
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
-    padding-right: 3.5rem;
+    width: 100%;
+    flex-basis: 100%;
   }
 }
 
@@ -71,19 +107,19 @@ body {
   justify-content: space-between;
 }
 
-/* メイン画像エリア（マンボウ枠） */
+/* メイン画像エリア */
 .illustration-container {
   width: 100%;
-  height: 320px;
-  border: 2px solid var(--border-line);
   position: relative;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .hero-image {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
   filter: grayscale(20%); /* 少し彩度を落として印刷になじませる */
 }
 
