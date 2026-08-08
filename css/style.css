@@ -66,6 +66,7 @@ body {
   aspect-ratio: 1 / 1.414;
   flex: 0 0 auto;
   width: min(100%, 500px);
+  /* border: 1px solid var(--border-line); */
   /* PCで並んだ時に本の中央に少し影を落とす */
   /* box-shadow: 4px 0 10px -3px rgba(0, 0, 0, 0.08); */
 }
