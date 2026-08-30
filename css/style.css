@@ -49,7 +49,7 @@ body {
   max-width: 1000px;
   /* ★ 上下にスペースが余っているときは自動で中央に吸い寄せられる */
   margin: auto; 
-  padding: 1rem;
+  padding: 0rem;
 }
 
 /* 1ページあたりの共通設定 */
@@ -86,7 +86,7 @@ body {
 .right-page {
   position: relative;
   flex: 1 1 320px;
-  padding: 3rem 2rem 1rem 2rem;
+  padding: 5rem 2rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -218,11 +218,11 @@ a.nav-item[href="about.html"] {
   body {
     /* ★スマホ時は dot2.png に切り替え */
     background-image: url("../images/dot.png");
-    padding: 1.5rem 0.8rem;
+    padding: 2rem 0.3rem;
   }
 
   .book-spread {
-    gap: 1.5rem;
+    gap: 5rem;
   }
 
   .page {
