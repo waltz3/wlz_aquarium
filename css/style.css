@@ -7,7 +7,7 @@
   --border-line: #2b2b2b;    /* 活字用の濃い枠線 */
   --font-serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "MS PMincho", serif;
   --font-mono: "Courier New", monospace;
-  --marker-color: rgba(46, 193, 222, 0.498);
+  --marker-color: rgb(131, 211, 227);
 }
 
 * {
@@ -17,9 +17,9 @@
 body {
   margin: 0;
   padding: 2rem 1rem;
-  min-height: 100vh;
+  min-height: 100dvh; /* 画面全体の高さを確保 */
   
-  /* 背景：PC時は dot.png */
+  /* 背景設定 */
   background-color: var(--bg-paper);
   background-image: url("../images/dot3.png");
   background-position: right top;
@@ -30,10 +30,10 @@ body {
   color: var(--ink-black);
   font-family: var(--font-serif);
   
-  /* 中央寄せ（はみ出してもスクロールできるように安全な配置） */
+  /* Flexbox で上下左右の中央寄せの基盤を作る */
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* 上端から配置して見切れを防止 */
+  align-items: center; /* ★ 広い画面では上下中央に配置 */
 }
 
 /* ==========================================
@@ -43,49 +43,55 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
+  align-items: flex-start;
   gap: 2rem;
   width: 100%;
   max-width: 1000px;
-  margin: auto 0; /* 画面に余裕がある時だけ上下中央に配置 */
+  /* ★ 上下にスペースが余っているときは自動で中央に吸い寄せられる */
+  margin: auto; 
+  padding: 1rem;
 }
 
 /* 1ページあたりの共通設定 */
 .page {
   flex: 0 1 380px;
   max-width: 500px;
-  padding: 2.5rem 2rem;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-/* 左ページ（画像1枚でピッタリ収める・見切れ防止） */
+/* ==========================================
+   左ページ（画像切れ防止・比率完全維持）
+   ========================================== */
 .left-page {
-  aspect-ratio: 1 / 1.35;
-  flex: 0 0 auto;
+  /* ★ 比率指定を画像の自然なアスペクト比に任せるため aspect-ratio を auto にするか 3/4 に明示 */
+  aspect-ratio: 3 / 4; 
+  flex: 0 1 420px;
   width: min(100%, 420px);
-  padding: 0; /* 余白ゼロで画像を全画面表示 */
-  overflow: hidden;
+  padding: 0;
+  overflow: visible; /* 切り取られないようにする */
+  display: flex;
+  align-items: flex-start;
 }
 
 .full-cover-image {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(20%);
+  height: auto; /* ★ 画像の縦横比を完全に維持 */
+  object-fit: contain; /* ★ 画像全体を確実に表示し、見切れを防ぐ */
 }
 
-/* 右ページ（メニュー全体を下げ、下端を左ページと一致させる） */
+/* ==========================================
+   右ページ
+   ========================================== */
 .right-page {
   position: relative;
   flex: 1 1 320px;
-  padding-top: 4.5rem; 
-  padding-bottom: 2rem;
+  padding: 3rem 2rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  /* 左ページの画像高さと大体揃えるために最小高さを確保 */
+  min-height: 480px; 
 }
 
 /* サブタイトル */
