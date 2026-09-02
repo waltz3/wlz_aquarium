@@ -16,50 +16,77 @@
       <img src="images/title2.png" alt="水族館 観測記録 扉絵" class="full-cover-image">
     </section>
 
-    <!-- 右ページ：検索・ナビゲーション・バーコード -->
+    <!-- 右ページ：図鑑目録・構造化エディトリアル -->
     <section class="page right-page">
       
-      <!-- 上部コンテンツ群（サブタイトル ＋ 検索 ＋ ナビ） -->
-      <div class="right-top-content">
-        <p class="site-subtitle">生物と水槽展示<br>に関する記録</p>
-        
-        <!-- 検索ボックス -->
-        <div class="search-container">
-          <input type="text" id="search-input" placeholder="検索（水槽、魚種、館名...）" autocomplete="off">
+      <!-- ページ上部の図鑑インデックスヘッダー -->
+      <div class="catalog-header">
+        <div class="catalog-meta">
+          <span class="catalog-code">CATALOGUE NO. 08</span>
+          <span class="catalog-rubric">AQUATIC SPECIMEN LOG</span>
         </div>
-
-        <!-- メインナビゲーション -->
-        <nav class="navigation">
-          <ul class="nav-list">
-            <li>
-              <a href="species.html" class="nav-item">
-                <span class="arrow">➢</span> 生き物から見る
-              </a>
-            </li>
-            <li>
-              <a href="map.html" class="nav-item">
-                <span class="arrow">➢</span> 地図から見る
-              </a>
-            </li>
-            <li>
-              <a href="archive.html" class="nav-item">
-                <span class="arrow">➢</span> なんでもいいから見る
-              </a>
-            </li>
-            <li>
-              <a href="about.html" class="nav-item">
-                <span class="arrow">➢</span> このサイトについて
-              </a>
-            </li>
-          </ul>
-        </nav>
+        
+        <!-- 岩波文庫・図鑑風の塗り帯タイトル -->
+        <div class="title-block">
+          <div class="tag-label">水槽展示 / 観察篇</div>
+          <h2 class="site-subtitle">生物と水槽展示<br>に関する記録</h2>
+        </div>
       </div>
 
-      <!-- 右下のバーコード装飾（常に一番下に配置） -->
-      <div class="barcode-wrapper">
-        <div class="barcode-bars"></div>
-        <div class="barcode-number">NO. 8049-2026-AQUATIC</div>
+      <!-- 検索ボックス（標本検索窓） -->
+      <div class="search-section">
+        <span class="search-label">■ 標本・水槽索引検索</span>
+        <div class="search-container">
+          <input type="text" id="search-input" placeholder="魚種、水槽名、施設名を入力..." autocomplete="off">
+        </div>
       </div>
+
+      <!-- ナビゲーション（図鑑の分類目録） -->
+      <nav class="navigation">
+        <div class="nav-caption">
+          <span>CLASSIFICATION</span>
+          <span>目録分類</span>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-row">
+            <span class="nav-idx">01</span>
+            <a href="species.html" class="nav-item">
+              <span class="nav-text">生き物・水槽の姿から見る</span>
+              <span class="nav-arrow">➢</span>
+            </a>
+          </li>
+          <li class="nav-row">
+            <span class="nav-idx">02</span>
+            <a href="map.html" class="nav-item">
+              <span class="nav-text">地図と施設から見る</span>
+              <span class="nav-arrow">➢</span>
+            </a>
+          </li>
+          <li class="nav-row">
+            <span class="nav-idx">03</span>
+            <a href="archive.html" class="nav-item">
+              <span class="nav-text">無作為抽出</span>
+              <span class="nav-arrow">➢</span>
+            </a>
+          </li>
+          <li class="nav-row nav-row-about">
+            <span class="nav-idx">EX</span>
+            <a href="about.html" class="nav-item nav-about">
+              <span class="nav-text">この記録について</span>
+              <span class="nav-arrow">➢</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- ページ最下部：図鑑の奥付風クレジット（バーコード代替） -->
+      <footer class="catalog-footer">
+        <div class="colophon-line"></div>
+        <div class="colophon-text">
+          <span>PRIVATE ARCHIVE</span>
+          <span>2026 EDITION</span>
+        </div>
+      </footer>
 
     </section>
 
