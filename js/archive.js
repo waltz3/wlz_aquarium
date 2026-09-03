@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("tanks.json")
     .then(res => res.json())
     .then(data => {
-      return Promise.all(data.map(log => fetchLog(log.content)));
+      return Promise.all(data.map(path => fetchLog(path)));
     })
     .then(logs => {
       renderCards(logs);

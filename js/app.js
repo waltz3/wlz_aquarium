@@ -8,10 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // JSON読み込み
   fetch('tanks.json')
     .then(res => res.json())
+    .then(paths => Promise.all(paths.map(path => fetch(path)
+      .then(res => res.text())
+      .then(markdown => ({ ...parseFrontMatter(markdown), content: path })))))
     .then(data => {
       allTanks = data;
       renderCards(allTanks);
     });
+
+  function parseFrontMatter(markdown) {
+    const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+    const metadata = {};
+
+    if (match) {
+      match[1].split("\n").forEach(line => {
+        const separator = line.indexOf(":");
+        if (separator > 0) {
+          const key = line.slice(0, separator).trim();
+          const value = line.slice(separator + 1).trim();
+          metadata[key] = value.replace(/^['"]|['"]$/g, "");
+        }
+      });
+    }
+
+    return { ...metadata, markdown: match ? markdown.slice(match[0].length) : markdown };
+  }
 
   // カード描画
   function renderCards(tanks) {
@@ -24,10 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.cursor = 'pointer'; // クリックできることがわかるように
 
       card.innerHTML = `
-        <div class="card-id">[${tank.id}] ${tank.date}</div>
+        <img src="${tank.image}" alt="${tank.title}" loading="lazy">
         <h2 class="card-title">${tank.title}</h2>
-        <div class="card-aquarium">📍 ${tank.aquarium}</div>
-        <p class="card-summary">${tank.summary}</p>
       `;
 
       // ★カードクリックでサイドビューを開く

@@ -1,8 +1,4 @@
 [
-  {
-    "content": "logs/001.md"
-  },
-  {
-    "content": "logs/log-002.md"
-  }
+  "logs/001.md",
+  "logs/log-002.md"
 ]
