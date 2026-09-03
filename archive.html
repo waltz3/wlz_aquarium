@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>観測台帳・水槽一覧 — 水族館の記録</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Markdownレンダラー（CDN） -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="subpage-body">
+
+  <div class="archive-container">
+    
+    <!-- ヘッダーナビゲーション -->
+    <header class="archive-header">
+      <div class="doc-nav">
+        <a href="index.html" class="back-link">◀ 目録扉へ戻る</a>
+        <span class="doc-meta">FOLIO CATALOGUE / SPECIMEN CARDS</span>
+      </div>
+      <div class="archive-title-area">
+        <span class="doc-tag">観測目録</span>
+        <h1 class="archive-title">水槽・人間観測台帳</h1>
+      </div>
+      <p class="archive-lead">実在の水槽空間と、その青いガラス壁を前にした人間の佇まい・情景の記録。</p>
+    </header>
+
+    <!-- カード一覧グリッド -->
+    <main class="cards-grid" id="cards-container">
+      <!-- JavaScriptにより tanks.json から動的にカードが生成されます -->
+    </main>
+
+  </div>
+
+  <!-- スライドイン式 手記ビューア（サイドドロワー） -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <aside class="note-drawer" id="note-drawer">
+    <div class="drawer-header">
+      <span class="drawer-id" id="drawer-id">LOG-000</span>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="閉じる">✕ 閉じる</button>
+    </div>
+    
+    <div class="drawer-content" id="drawer-content">
+      <!-- Markdownから変換された本文がここに入ります -->
+    </div>
+  </aside>
+
+  <script src="js/archive.js"></script>
+</body>
+</html>
