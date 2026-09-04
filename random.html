@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ランダムカード — 水族館の記録</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="subpage-body">
+  <div class="archive-container random-container">
+    <header class="archive-header">
+      <div class="doc-nav">
+        <a href="index.html" class="back-link">◀ 目録扉へ戻る</a>
+        <a href="archive.html" class="back-link">カード一覧へ</a>
+        <button class="draw-button" id="draw-button" type="button">もう一度引く <span>↻</span></button>
+      </div>
+      <div class="archive-title-area">
+        <span class="doc-tag">無作為抽出</span>
+        <h1 class="archive-title">ランダムカードを引く</h1>
+      </div>
+      <p class="archive-lead">記録の束から一枚を無作為に選びます。</p>
+    </header>
+
+    <main class="random-draw" aria-live="polite">
+      <div id="random-card"></div>
+    </main>
+  </div>
+  <script src="js/random.js"></script>
+</body>
+</html>

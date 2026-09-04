@@ -20,15 +20,32 @@
       </div>
       <div class="archive-title-area">
         <span class="doc-tag">観測目録</span>
-        <h1 class="archive-title">水槽・人間観測台帳</h1>
+        <h1 class="archive-title">記録カード一覧</h1>
       </div>
       <p class="archive-lead">実在の水槽空間と、その青いガラス壁を前にした人間の佇まい・情景の記録。</p>
     </header>
 
-    <!-- カード一覧グリッド -->
-    <main class="cards-grid" id="cards-container">
-      <!-- JavaScriptにより tanks.json から動的にカードが生成されます -->
-    </main>
+    <main class="record-detail" id="record-detail" hidden></main>
+
+    <div class="archive-layout" id="archive-layout">
+      <!-- カテゴリ別アーカイブ索引 -->
+      <aside class="category-index" aria-label="カテゴリ別アーカイブ">
+        <div class="category-heading">ARCHIVE INDEX / 分類索引</div>
+        <section class="category-group">
+          <h2>施設別</h2>
+          <ul id="aquarium-categories"></ul>
+        </section>
+        <section class="category-group">
+          <h2>生き物別</h2>
+          <ul id="species-categories"></ul>
+        </section>
+      </aside>
+
+      <!-- カード一覧グリッド -->
+      <main class="cards-grid" id="cards-container">
+        <!-- JavaScriptにより tanks.json から動的にカードが生成されます -->
+      </main>
+    </div>
 
   </div>
 

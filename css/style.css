@@ -304,6 +304,7 @@ body {
   max-width: 720px;
   margin: 0 auto;
   padding: 2.5rem 2rem;
+  min-height: calc(100dvh - 6rem);
   background-color: #fcfbf7;
   border: 1px solid var(--ink-black);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
@@ -319,6 +320,12 @@ body {
   font-size: 0.72rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding-bottom: 0.5rem;
+}
+
+.doc-nav .draw-button {
+  margin-left: auto;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.8rem;
 }
 
 .back-link {
@@ -478,9 +485,11 @@ body {
    観測台帳（カード一覧）レイアウト
    ========================================== */
 .archive-container {
-  max-width: 1100px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5rem;
+  min-height: calc(100dvh - 6rem);
+  background-color: rgba(252, 251, 247, 0.96);
 }
 
 .archive-header {
@@ -509,11 +518,250 @@ body {
   margin: 0.5rem 0 0 0;
 }
 
+.archive-layout {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.archive-layout[hidden] {
+  display: none;
+}
+
+.category-index {
+  position: sticky;
+  top: 1rem;
+  border-top: 2px solid var(--ink-black);
+  border-bottom: 1px solid var(--ink-black);
+  padding: 0.7rem 0 1rem;
+}
+
+.category-heading {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+
+.category-group + .category-group {
+  margin-top: 1.5rem;
+}
+
+.category-group h2 {
+  font-size: 0.85rem;
+  margin: 0 0 0.45rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.35);
+}
+
+.category-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-group li {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-bottom: 0.55rem;
+}
+
+.category-group a {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  color: #0047ab;
+  text-decoration: underline;
+  text-decoration-color: #0047ab;
+  text-underline-offset: 0.08em;
+  text-decoration-thickness: 1px;
+  line-height: 1.35;
+}
+
+.category-group a:hover {
+  background-color: rgba(131, 211, 227, 0.25);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.card-tag {
+  color: #0047ab;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-decoration-color: #0047ab;
+  text-underline-offset: 0.08em;
+}
+
+.card-tag:hover {
+  color: #002d70;
+}
+
 /* カードグリッド */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2.5rem 2rem;
+}
+
+.record-detail[hidden] {
+  display: none;
+}
+
+.detail-back-link {
+  display: inline-block;
+  color: var(--ink-black);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-back-link:hover {
+  text-decoration: underline;
+}
+
+.detail-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  padding-bottom: 0.7rem;
+}
+
+.record-detail-card {
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.is-detail-page .archive-header {
+  display: none;
+}
+
+.is-detail-page .archive-container {
+  min-height: 100dvh;
+}
+
+.is-detail-page .record-detail-card > .card-meta,
+.is-detail-page .record-detail-summary .card-scale-tag,
+.is-detail-page .record-detail-summary .card-species,
+.is-detail-page .record-detail-summary p {
+  display: none;
+}
+
+.is-detail-page .record-detail-summary .card-title {
+  margin-top: 0;
+}
+
+.is-detail-page .record-detail-content h1:first-child {
+  display: none;
+}
+
+.record-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.record-detail-text {
+  max-height: calc(100vh - 13rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+  font-size: 0.88rem;
+}
+
+.record-detail-summary p {
+  line-height: 1.8;
+}
+
+.record-detail-content {
+  margin: 2rem 0 0;
+  border-top: 1px solid var(--ink-black);
+  padding-top: 1rem;
+  line-height: 1.9;
+}
+
+.record-detail-content h1,
+.record-detail-content h2 {
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.random-container {
+  max-width: 760px;
+}
+
+.random-draw {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.random-card {
+  animation: card-reveal 0.35s ease both;
+  cursor: pointer;
+  padding: 0;
+}
+
+.random-card .card-image-box {
+  margin-bottom: 0;
+}
+
+.random-card-title {
+  margin: 0;
+  padding: 0.7rem 0.8rem;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.random-card-content {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  padding-top: 0.8rem;
+  line-height: 1.8;
+}
+
+.random-card-content h1,
+.random-card-content h2 {
+  font-size: 1.15rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 0.3rem;
+}
+
+.draw-button {
+  margin-left: 1rem;
+  border: 1px solid var(--ink-black);
+  background: var(--ink-black);
+  color: var(--bg-paper);
+  font-family: var(--font-serif);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+}
+
+.draw-button:hover {
+  background: var(--marker-color);
+  color: var(--ink-black);
+}
+
+.draw-button span {
+  font-family: var(--font-mono);
+  margin-left: 0.4rem;
+}
+
+@keyframes card-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* 標本カード単体 */
@@ -711,4 +959,41 @@ body {
   background-color: rgba(131, 211, 227, 0.12);
   border-left: 3px solid var(--marker-color);
   font-style: normal;
+}
+
+@media (max-width: 820px) {
+  .doc-container,
+  .archive-container {
+    min-height: calc(100dvh - 3rem);
+  }
+
+  .archive-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .category-index {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .category-heading {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .category-group + .category-group {
+    margin-top: 0;
+  }
+
+  .record-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record-detail-text {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
 }

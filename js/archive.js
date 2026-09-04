@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("drawer-close");
   const drawerContent = document.getElementById("drawer-content");
   const drawerId = document.getElementById("drawer-id");
+  const aquariumCategories = document.getElementById("aquarium-categories");
+  const speciesCategories = document.getElementById("species-categories");
+  const archiveLayout = document.getElementById("archive-layout");
+  const detailContainer = document.getElementById("record-detail");
+  const archiveTitle = document.querySelector(".archive-title");
 
   // tanks.json を読み込み
   fetch("tanks.json")
@@ -13,11 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return Promise.all(data.map(path => fetchLog(path)));
     })
     .then(logs => {
-      renderCards(logs);
+      renderCategories(logs);
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get("category");
+      if (category) archiveTitle.textContent = category;
+      renderCards(category ? logs.filter(log => getCategories(log).includes(category)) : logs);
 
       const targetId = new URLSearchParams(window.location.search).get("id");
       const item = logs.find(log => log.id === targetId);
-      if (item) openDrawer(item);
+      if (item) renderDetail(item);
     })
     .catch(err => console.error("データ読み込み失敗:", err));
 
@@ -48,6 +57,31 @@ document.addEventListener("DOMContentLoaded", () => {
     return { ...metadata, markdown: match ? markdown.slice(match[0].length) : markdown };
   }
 
+  function getCategories(item) {
+    return [item.aquarium, ...(item.species || "").split(/[、,]/)]
+      .map(value => value.trim())
+      .filter(Boolean);
+  }
+
+  function renderCategories(logs) {
+    const renderGroup = (key, target) => {
+      const counts = new Map();
+      logs.forEach(log => {
+        (key === "species" ? (log.species || "").split(/[、,]/) : [log.aquarium])
+          .map(value => value.trim())
+          .filter(Boolean)
+          .forEach(value => counts.set(value, (counts.get(value) || 0) + 1));
+      });
+
+      target.innerHTML = [...counts.entries()].sort().map(([name, count]) => `
+        <li><a href="archive.html?category=${encodeURIComponent(name)}">${name}<span>(${count})</span></a></li>
+      `).join("");
+    };
+
+    renderGroup("aquarium", aquariumCategories);
+    renderGroup("species", speciesCategories);
+  }
+
   // カード一覧の描画
   function renderCards(list) {
     cardsContainer.innerHTML = list.map(item => `
@@ -64,10 +98,47 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".specimen-card").forEach(card => {
       card.addEventListener("click", () => {
         const id = card.getAttribute("data-id");
-        const item = list.find(log => log.id === id);
-        if (item) openDrawer(item);
+        window.location.href = `archive.html?id=${encodeURIComponent(id)}`;
       });
     });
+  }
+
+  function renderCardTags(item) {
+    const tags = [item.aquarium, ...(item.species || "").split(/[、,]/)]
+      .map(value => value.trim())
+      .filter(Boolean);
+
+    return tags.map(tag => `
+      <a href="archive.html?category=${encodeURIComponent(tag)}" class="card-tag" onclick="event.stopPropagation()">${tag}</a>
+    `).join("");
+  }
+
+  function renderDetail(item) {
+    document.body.classList.add("is-detail-page");
+    archiveLayout.hidden = true;
+    detailContainer.hidden = false;
+    detailContainer.innerHTML = `
+      <nav class="detail-navigation" aria-label="詳細ページナビゲーション">
+        <a href="archive.html" class="detail-back-link">◀ カード一覧へ戻る</a>
+        <a href="random.html" class="detail-back-link">ランダムカードを引く ↗</a>
+      </nav>
+      <article class="record-detail-card">
+        <div class="card-meta"><span>${item.id}</span><span>${item.date || ""}</span></div>
+        <div class="record-detail-grid">
+          <div class="card-image-box"><img src="${item.image}" alt="${item.title}"></div>
+          <div class="record-detail-text">
+            <div class="record-detail-summary">
+              <div class="card-scale-tag">${item.aquarium || ""}</div>
+              <h1 class="card-title">${item.title}</h1>
+              <p class="card-species">${item.species || ""}</p>
+              <div class="card-tags">${renderCardTags(item)}</div>
+              <p>${item.observer_note || ""}</p>
+            </div>
+            <div class="record-detail-content">${marked.parse(item.markdown)}</div>
+          </div>
+        </div>
+      </article>
+    `;
   }
 
   // ドロワーを開いてMDをレンダリング
