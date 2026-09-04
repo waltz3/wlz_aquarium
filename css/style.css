@@ -497,7 +497,14 @@ body {
   border-bottom: 2px solid var(--ink-black);
   padding-bottom: 1.5rem;
 }
-
+/* タイトルエリアを縦並びにし、doc-tag を上へ配置 */
+.archive-title-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0rem;
+  margin-top: 1.5rem;
+}
 .archive-title {
   font-size: 2.2rem;
   font-weight: 900;
@@ -584,10 +591,18 @@ body {
 }
 
 .card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.7rem;
+  display: grid;
+  gap: 0.35rem;
   margin-top: 0.8rem;
+}
+
+.card-tag-group {
+  line-height: 1.5;
+}
+
+.card-tag-label {
+  color: var(--ink-black);
+  font-size: 0.78rem;
 }
 
 .card-tag {
@@ -640,6 +655,23 @@ body {
   padding: 0;
   background: transparent;
   border: 0;
+}
+
+.detail-doc-tag {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.8rem;
+}
+
+.is-detail-page .record-detail-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.is-detail-page .record-detail-summary .card-title {
+  display: block;
+  clear: both;
 }
 
 .is-detail-page .archive-header {

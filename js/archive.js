@@ -21,7 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCategories(logs);
       const params = new URLSearchParams(window.location.search);
       const category = params.get("category");
-      if (category) archiveTitle.textContent = category;
+      if (category) {
+        archiveTitle.textContent = category;
+        archiveTitle.previousElementSibling.textContent = "カテゴリ";
+      }
       renderCards(category ? logs.filter(log => getCategories(log).includes(category)) : logs);
 
       const targetId = new URLSearchParams(window.location.search).get("id");
@@ -104,13 +107,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderCardTags(item) {
-    const tags = [item.aquarium, ...(item.species || "").split(/[、,]/)]
+    const species = (item.species || "").split(/[、,]/)
       .map(value => value.trim())
       .filter(Boolean);
+    const renderGroup = (label, tags) => `
+      <div class="card-tag-group">
+        <span class="card-tag-label">${label}：</span>
+        ${tags.map(tag => `
+          <a href="archive.html?category=${encodeURIComponent(tag)}" class="card-tag" onclick="event.stopPropagation()">${tag}</a>
+        `).join("、")}
+      </div>
+    `;
 
-    return tags.map(tag => `
-      <a href="archive.html?category=${encodeURIComponent(tag)}" class="card-tag" onclick="event.stopPropagation()">${tag}</a>
-    `).join("");
+    return renderGroup("施設", [item.aquarium].filter(Boolean))
+      + renderGroup("生き物", species);
   }
 
   function renderDetail(item) {
@@ -129,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="record-detail-text">
             <div class="record-detail-summary">
               <div class="card-scale-tag">${item.aquarium || ""}</div>
+              <span class="doc-tag detail-doc-tag">水族館の記録</span>
               <h1 class="card-title">${item.title}</h1>
               <p class="card-species">${item.species || ""}</p>
               <div class="card-tags">${renderCardTags(item)}</div>
