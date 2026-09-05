@@ -15,13 +15,13 @@
     <!-- ヘッダーナビゲーション -->
     <header class="archive-header">
       <div class="doc-nav">
-        <a href="index.html" class="back-link">◀ 目録扉へ戻る</a>
+        <a href="index.html" class="back-link">◀ 表紙に戻る</a>
       </div>
       <div class="archive-title-area">
         <span class="doc-tag">水族館の記録</span>
         <h1 class="archive-title">記録カード一覧</h1>
       </div>
-      <p class="archive-lead">実在の水槽空間と、その青いガラス壁を前にした人間の佇まい・情景の記録。</p>
+      <!-- <p class="archive-lead"></p> -->
     </header>
 
     <main class="record-detail" id="record-detail" hidden></main>
@@ -30,14 +30,20 @@
       <!-- カテゴリ別アーカイブ索引 -->
       <aside class="category-index" aria-label="カテゴリ別アーカイブ">
         <div class="category-heading">ARCHIVE INDEX / 分類索引</div>
-        <section class="category-group">
-          <h2>施設別</h2>
-          <ul id="aquarium-categories"></ul>
-        </section>
-        <section class="category-group">
-          <h2>生き物別</h2>
-          <ul id="species-categories"></ul>
-        </section>
+        <button class="category-toggle" type="button" aria-expanded="false" aria-controls="category-groups">
+          カテゴリを表示 <span aria-hidden="true">＋</span>
+        </button>
+        <div class="category-groups" id="category-groups" hidden>
+          <a class="all-cards-link" href="archive.html">すべてのカード</a>
+          <section class="category-group">
+            <h2>施設別</h2>
+            <ul id="aquarium-categories"></ul>
+          </section>
+          <section class="category-group">
+            <h2>生き物別</h2>
+            <ul id="species-categories"></ul>
+          </section>
+        </div>
       </aside>
 
       <!-- カード一覧グリッド -->

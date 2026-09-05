@@ -10,6 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const archiveLayout = document.getElementById("archive-layout");
   const detailContainer = document.getElementById("record-detail");
   const archiveTitle = document.querySelector(".archive-title");
+  const categoryToggle = document.querySelector(".category-toggle");
+  const categoryGroups = document.getElementById("category-groups");
+
+  categoryToggle.addEventListener("click", () => {
+    const isExpanded = categoryToggle.getAttribute("aria-expanded") === "true";
+    categoryToggle.setAttribute("aria-expanded", String(!isExpanded));
+    categoryToggle.querySelector("span").textContent = isExpanded ? "＋" : "−";
+    categoryToggle.firstChild.textContent = isExpanded ? "カテゴリを表示 " : "カテゴリを隠す ";
+    categoryGroups.hidden = isExpanded;
+  });
 
   // tanks.json を読み込み
   fetch("tanks.json")
@@ -129,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     detailContainer.hidden = false;
     detailContainer.innerHTML = `
       <nav class="detail-navigation" aria-label="詳細ページナビゲーション">
-        <a href="archive.html" class="detail-back-link">◀ カード一覧へ戻る</a>
+        <a href="archive.html" class="detail-back-link">◀ カード一覧へ</a>
         <a href="random.html" class="detail-back-link">ランダムカードを引く ↗</a>
       </nav>
       <article class="record-detail-card">

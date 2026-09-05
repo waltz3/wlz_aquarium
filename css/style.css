@@ -1,6 +1,10 @@
 /* ==========================================
    印刷物・活字本トーン（紙と墨）
    ========================================== */
+html {
+  font-size: 14px;
+}
+
 :root {
   --bg-paper: #ffffff;
   --ink-black: #000000;
@@ -117,7 +121,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  width: 1.35rem;
+  width: 1.2rem;
   background-color: var(--marker-color);
   box-shadow: 0 0 2px rgba(0, 48, 143, 0.45), 0 0 7px rgba(131, 211, 227, 0.45);
 }
@@ -235,6 +239,7 @@ body {
 }
 
 .nav-text {
+  font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 0.em;
@@ -347,10 +352,12 @@ body {
   text-decoration: none;
   font-family: var(--font-gothic);
   font-weight: 700;
+  font-size: 0.9rem;
 }
 
 .back-link:hover {
   opacity: 0.6;
+  text-decoration: underline;
 }
 
 .doc-meta {
@@ -370,7 +377,7 @@ body {
 
 .doc-tag {
   color: var(--ink-black);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   padding: 0;
@@ -533,10 +540,10 @@ body {
   text-shadow: var(--title-bleed);
 }
 .archive-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-gothic);
   font-size: 2.2rem;
   font-weight: 900;
-  letter-spacing: 0.15em;
+  letter-spacing: 0em;
   margin: 0;
   background-color: transparent;
   color: var(--ink-black);
@@ -556,10 +563,22 @@ body {
 }
 
 .archive-layout {
+  position: relative;
   display: grid;
   grid-template-columns: 190px 1fr;
   gap: 2rem;
   align-items: start;
+  min-height: calc(100dvh - 15rem);
+}
+
+.archive-layout::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(190px + 1rem);
+  width: 1px;
+  background-color: var(--ink-black);
 }
 
 .archive-layout[hidden] {
@@ -579,6 +598,29 @@ body {
   font-size: 0.63rem;
   letter-spacing: 0.08em;
   margin-bottom: 1.2rem;
+}
+
+.all-cards-link {
+  display: inline-block;
+  color: #0047ab;
+  line-height: 1.35;
+  text-decoration: underline;
+  text-decoration-color: #0047ab;
+  text-underline-offset: 0.08em;
+  text-decoration-thickness: 1px;
+  margin-bottom: 1.2rem;
+}
+
+.category-toggle {
+  display: none;
+}
+
+.category-groups[hidden] {
+  display: block;
+}
+
+.cards-grid {
+  padding-left: 2rem;
 }
 
 .category-group + .category-group {
@@ -622,7 +664,7 @@ body {
 }
 
 .category-group a:hover {
-  background-color: rgba(131, 211, 227, 0.25);
+  background-color: transparent;
 }
 
 .card-tags {
@@ -776,6 +818,11 @@ body {
   margin: 0 auto;
 }
 
+.random-draw .draw-button {
+  display: block;
+  margin: 0 0 1rem auto;
+}
+
 .random-card {
   animation: card-reveal 0.35s ease both;
   cursor: pointer;
@@ -838,7 +885,8 @@ body {
 /* 標本カード単体 */
 .specimen-card {
   background-color: var(--bg-paper);
-  border: 1px solid var(--ink-black);
+  border: 1.3px solid var(--ink-black);
+  box-shadow: var(--title-bleed);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -858,7 +906,7 @@ body {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 2px solid var(--ink-black);
   padding-bottom: 0.4rem;
   margin-bottom: 0.8rem;
 }
@@ -869,7 +917,7 @@ body {
   overflow: hidden;
   background-color: #e5e3dc;
   margin-bottom: 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1.3px solid var(--ink-black);
 }
 
 .card-image-box img {
@@ -893,7 +941,7 @@ body {
 }
 
 .card-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-gothic);
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -1042,6 +1090,11 @@ body {
 
   .archive-layout {
     grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .archive-layout::before {
+    display: none;
   }
 
   .category-index {
@@ -1054,6 +1107,45 @@ body {
   .category-heading {
     grid-column: 1 / -1;
     margin-bottom: 0;
+  }
+
+  .all-cards-link {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  .cards-grid {
+    padding-left: 0;
+  }
+
+  .category-toggle {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 0;
+    border-top: 1px dashed rgba(0, 0, 0, 0.35);
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.35);
+    background: transparent;
+    color: var(--ink-black);
+    font-family: var(--font-gothic);
+    font-size: 0.85rem;
+    text-align: left;
+    padding: 0.55rem 0;
+    cursor: pointer;
+  }
+
+  .category-groups[hidden] {
+    display: none;
+  }
+
+  .category-groups {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
   }
 
   .category-group + .category-group {
