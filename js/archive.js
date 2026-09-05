@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       target.innerHTML = [...counts.entries()].sort().map(([name, count]) => `
-        <li><a href="archive.html?category=${encodeURIComponent(name)}">${name}<span>(${count})</span></a></li>
+        <li><a href="archive.html?category=${encodeURIComponent(name)}"><span class="category-link-label">${name}<span class="category-link-count">(${count})</span></span></a></li>
       `).join("");
     };
 
