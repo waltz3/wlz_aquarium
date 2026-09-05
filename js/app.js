@@ -40,12 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = '';
 
     tanks.forEach(tank => {
+      const imageValue = tank.images || tank.image || "";
+      const firstImage = (Array.isArray(imageValue) ? imageValue : imageValue.replace(/^\[|\]$/g, "").split(/\s*,\s*/))
+        .map(image => image.replace(/^['"]|['"]$/g, "")).find(Boolean) || "";
       const card = document.createElement('article');
       card.className = 'specimen-card';
       card.style.cursor = 'pointer'; // クリックできることがわかるように
 
       card.innerHTML = `
-        <img src="${tank.image}" alt="${tank.title}" loading="lazy">
+        <img src="${firstImage}" alt="${tank.title}" loading="lazy">
         <h2 class="card-title">${tank.title}</h2>
       `;
 

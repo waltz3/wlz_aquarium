@@ -40,9 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function drawCard() {
     const item = logs[Math.floor(Math.random() * logs.length)];
+    const imageValue = item.images || item.image || "";
+    const firstImage = (Array.isArray(imageValue) ? imageValue : imageValue.replace(/^\[|\]$/g, "").split(/\s*,\s*/))
+      .map(image => image.replace(/^['"]|['"]$/g, "")).find(Boolean) || "";
     cardContainer.innerHTML = `
       <article class="specimen-card random-card" data-id="${item.id}">
-        <div class="card-image-box"><img src="${item.image}" alt="${item.title}"></div>
+        <div class="card-image-box"><img src="${firstImage}" alt="${item.title}"></div>
         <h2 class="random-card-title">${item.title}</h2>
       </article>
     `;

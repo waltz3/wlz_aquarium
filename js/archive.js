@@ -76,6 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .filter(Boolean);
   }
 
+  function getImages(item) {
+    const value = item.images || item.image || "";
+    if (Array.isArray(value)) return value.filter(Boolean);
+    const normalized = value.trim().replace(/^\[|\]$/g, "");
+    return normalized.split(/\s*,\s*/).map(image => image.replace(/^['"]|['"]$/g, "")).filter(Boolean);
+  }
+
   function renderCategories(logs) {
     const renderGroup = (key, target) => {
       const counts = new Map();
@@ -100,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cardsContainer.innerHTML = list.map(item => `
       <article class="specimen-card" data-id="${item.id}">
         <div class="card-image-box">
-          <img src="${item.image}" alt="${item.title}" loading="lazy">
+          <img src="${getImages(item)[0] || ""}" alt="${item.title}" loading="lazy">
         </div>
 
         <h2 class="card-title">${item.title}</h2>
@@ -134,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderDetail(item) {
+    const images = getImages(item);
     document.body.classList.add("is-detail-page");
     archiveLayout.hidden = true;
     detailContainer.hidden = false;
@@ -145,11 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
       <article class="record-detail-card">
         <div class="card-meta"><span>${item.id}</span><span>${item.date || ""}</span></div>
         <div class="record-detail-grid">
-          <div class="card-image-box"><img src="${item.image}" alt="${item.title}"></div>
+          <div class="card-image-gallery">
+            ${images.map(image => `<img src="${image}" alt="${item.title}">`).join("")}
+          </div>
           <div class="record-detail-text">
             <div class="record-detail-summary">
               <div class="card-scale-tag">${item.aquarium || ""}</div>
-              <span class="doc-tag detail-doc-tag">水族館の記録</span>
+              <div class="detail-card-number">${item.id}</div>
               <h1 class="card-title">${item.title}</h1>
               <p class="card-species">${item.species || ""}</p>
               <div class="card-tags">${renderCardTags(item)}</div>

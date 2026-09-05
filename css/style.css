@@ -679,21 +679,18 @@ body {
 
 .card-tag-label {
   color: var(--ink-black);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
 }
 
 .card-tag {
   color: #0047ab;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.35;
   text-decoration: underline;
   text-decoration-color: #0047ab;
   text-underline-offset: 0.08em;
 }
 
-.card-tag:hover {
-  color: #002d70;
-}
 
 /* カードグリッド */
 .cards-grid {
@@ -751,6 +748,14 @@ body {
   clear: both;
 }
 
+.detail-card-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
 .is-detail-page .archive-header {
   display: none;
 }
@@ -782,6 +787,18 @@ body {
   grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
   gap: 2rem;
   align-items: start;
+}
+
+.card-image-gallery {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.card-image-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .record-detail-text {
@@ -945,7 +962,7 @@ body {
   font-weight: 900;
   letter-spacing: 0.08em;
   margin: 0;
-  padding: 0.45rem 0.8rem;
+  padding: 0.45rem 0.3rem;
   line-height: 1.35;
 }
 
