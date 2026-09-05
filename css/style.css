@@ -6,7 +6,7 @@ html {
 }
 
 :root {
-  --bg-paper: #ffffff;
+  --bg-paper: #f5f5f5;
   --ink-black: #000000;
   --border-line: #000000;
   --font-serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "MS PMincho", serif;
@@ -352,7 +352,7 @@ body {
   text-decoration: none;
   font-family: var(--font-gothic);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .back-link:hover {
@@ -497,10 +497,10 @@ body {
     padding: 0.75rem 0.5rem 1.5rem;
   }
   .doc-container {
-    padding: 1.2rem 1.2rem 1.8rem;
+    padding: 1.2rem 0.5rem 1.8rem;
   }
   .doc-title {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
   }
   .doc-colophon {
     flex-direction: column;
@@ -884,9 +884,9 @@ body {
 
 /* 標本カード単体 */
 .specimen-card {
-  background-color: var(--bg-paper);
-  border: 1.3px solid var(--ink-black);
-  box-shadow: var(--title-bleed);
+  background-color: #fff;
+  /* border-left: 2.5px solid var(--ink-black); */
+  box-shadow: 0 0 0.25px currentColor, 0 0 2.5px rgba(0, 0, 0, 0.18), 0 0 6px rgba(131, 211, 227, 0.28);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -906,7 +906,6 @@ body {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
-  border-bottom: 2px solid var(--ink-black);
   padding-bottom: 0.4rem;
   margin-bottom: 0.8rem;
 }
@@ -917,7 +916,6 @@ body {
   overflow: hidden;
   background-color: #e5e3dc;
   margin-bottom: 0;
-  border-bottom: 1.3px solid var(--ink-black);
 }
 
 .card-image-box img {
@@ -941,6 +939,7 @@ body {
 }
 
 .card-title {
+  color: #000;
   font-family: var(--font-gothic);
   font-size: 1rem;
   font-weight: 900;
@@ -1091,6 +1090,25 @@ body {
   .archive-layout {
     grid-template-columns: 1fr;
     min-height: 0;
+  }
+
+  .archive-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+
+  .archive-title {
+    font-size: 1.7rem;
+  }
+
+  .is-detail-page .record-detail-summary .card-title {
+    font-size: 1.8rem;
+  }
+
+  .cards-grid .card-image-box,
+  .random-card .card-image-box {
+    aspect-ratio: 16 / 9;
   }
 
   .archive-layout::before {
