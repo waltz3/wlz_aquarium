@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src="${getImages(item)[0] || ""}" alt="${item.title}" loading="lazy">
         </div>
 
-        <h2 class="card-title">${item.title}</h2>
+        <h2 class="card-thumb-title">${item.title}</h2>
       </article>
     `).join("");
 
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="record-detail-summary">
               <div class="card-scale-tag">${item.aquarium || ""}</div>
               <div class="detail-card-number">${item.id}</div>
-              <h1 class="card-title">${item.title}</h1>
+              <h1 class="detail-title">${item.title}</h1>
               <p class="card-species">${item.species || ""}</p>
               <div class="card-tags">${renderCardTags(item)}</div>
               <p>${item.observer_note || ""}</p>

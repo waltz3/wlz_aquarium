@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         <img src="${firstImage}" alt="${tank.title}" loading="lazy">
-        <h2 class="card-title">${tank.title}</h2>
+        <h2 class="card-thumb-title">${tank.title}</h2>
       `;
 
       // ★カードクリックでサイドビューを開く
