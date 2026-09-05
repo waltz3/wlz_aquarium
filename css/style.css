@@ -316,13 +316,13 @@ body {
    ========================================== */
 .subpage-body {
   display: block;
-  padding: 3rem 1rem;
+  padding: 1.25rem 1rem 3rem;
 }
 
 .doc-container {
   max-width: 720px;
   margin: 0 auto;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 2rem 2.5rem;
   min-height: calc(100dvh - 6rem);
   background-color: var(--bg-paper);
   border: 1px solid var(--ink-black);
@@ -494,10 +494,10 @@ body {
 /* スマホ調整 */
 @media (max-width: 820px) {
   .subpage-body {
-    padding: 1.5rem 0.5rem;
+    padding: 0.75rem 0.5rem 1.5rem;
   }
   .doc-container {
-    padding: 1.8rem 1.2rem;
+    padding: 1.2rem 1.2rem 1.8rem;
   }
   .doc-title {
     font-size: 1.7rem;
@@ -513,7 +513,7 @@ body {
 .archive-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
   min-height: calc(100dvh - 6rem);
   background-color: var(--bg-paper);
 }
@@ -641,7 +641,7 @@ body {
 }
 
 .category-group li {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 0.55rem;
 }
@@ -788,7 +788,7 @@ body {
   max-height: calc(100vh - 13rem);
   overflow-y: auto;
   padding-right: 1rem;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
 }
 
 .record-detail-summary p {
