@@ -212,11 +212,18 @@ body {
   display: flex;
   align-items: center;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.35);
-  transition: background-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .nav-row:hover {
-  background-color: rgba(131, 211, 227, 0.18);
+  background-color: transparent;
+}
+
+.nav-row:hover .nav-idx,
+.nav-row:hover .nav-item,
+.nav-row:hover .nav-text,
+.nav-row:hover .nav-arrow {
+  color: #0047ab;
 }
 
 .nav-idx {
@@ -240,7 +247,7 @@ body {
 
 .nav-text {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.em;
   /* text-shadow: 0 0 1px rgba(0, 48, 143, 0.45), 0 0 7px rgba(131, 211, 227, 0.45); */
@@ -518,6 +525,10 @@ body {
   background-color: var(--bg-paper);
 }
 
+.about-container {
+  max-width: 1440px;
+}
+
 .archive-header {
   margin-bottom: 3rem;
   border-bottom: 2px solid var(--ink-black);
@@ -553,6 +564,23 @@ body {
   -webkit-text-stroke: 0.15px currentColor;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.about-container .doc-content {
+  padding: 0 2rem;
+}
+
+.about-container .rule-divider,
+.about-container .doc-heading {
+  border: 0;
+}
+
+.about-container .rule-divider {
+  display: none;
+}
+
+.about-container .doc-heading {
+  font-weight: 700;
 }
 
 .archive-lead {
@@ -774,8 +802,8 @@ body {
   inset: 0;
   z-index: 90;
   pointer-events: none;
-  box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.1),
-    inset 0 0 24px rgba(222, 244, 248, 0.626);
+  box-shadow: inset 0 0 55px rgba(0, 0, 0, 0.171),
+    inset 0 0 24px rgba(215, 247, 252, 0.626);
 }
 
 .is-detail-page .record-detail-card > .card-meta,
@@ -1117,6 +1145,119 @@ body {
   font-style: normal;
 }
 
+/* 表紙ページは画像と文字の比率を固定する */
+.cover-page {
+  padding: 28px 14px;
+}
+
+.cover-page .book-spread {
+  gap: 35px;
+  max-width: 980px;
+}
+
+.cover-page .page {
+  flex-basis: 380px;
+  max-width: 480px;
+}
+
+.cover-page .left-page {
+  flex-basis: 420px;
+  width: min(100%, 420px);
+}
+
+.cover-page .right-page {
+  flex-basis: 340px;
+  padding: 21px 14px 14px 21px;
+  min-height: 520px;
+}
+
+.cover-page .catalog-header {
+  margin-bottom: 28px;
+}
+
+.cover-page .catalog-meta {
+  font-size: 9px;
+  padding-bottom: 4px;
+  margin-bottom: 17px;
+}
+
+.cover-page .title-block {
+  gap: 2px;
+  margin-top: 28px;
+  padding: 2px 0 4px 28px;
+}
+
+.cover-page .title-block::before {
+  width: 17px;
+}
+
+.cover-page .tag-label {
+  font-size: 10px;
+}
+
+.cover-page .site-subtitle {
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.cover-page .navigation {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.cover-page .nav-caption {
+  font-size: 9px;
+  padding-bottom: 4px;
+}
+
+.cover-page .nav-idx {
+  font-size: 14px;
+  width: 31px;
+}
+
+.cover-page .nav-item {
+  padding: 11px 3px;
+}
+
+.cover-page .nav-text {
+  font-size: 16px;
+}
+
+.cover-page .nav-arrow {
+  font-size: 17px;
+}
+
+.cover-page .nav-row-about .nav-text {
+  font-size: 15px;
+}
+
+.cover-page .catalog-footer {
+  margin-top: 28px;
+  padding-top: 7px;
+}
+
+.cover-page .colophon-line {
+  margin-bottom: 6px;
+}
+
+.cover-page .colophon-text {
+  font-size: 8px;
+}
+
+@media (max-width: 820px) {
+  .cover-page {
+    padding: 21px 7px;
+  }
+
+  .cover-page .book-spread {
+    gap: 49px;
+  }
+
+  .cover-page .right-page {
+    padding: 21px 7px 14px;
+  }
+}
+
 @media (max-width: 820px) {
   .doc-container,
   .archive-container {
@@ -1131,6 +1272,10 @@ body {
   .archive-container {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .about-container .doc-content {
+    padding: 0;
   }
 
 
