@@ -727,7 +727,7 @@ body {
 /* カードグリッド */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 2.5rem 2rem;
 }
 
@@ -1314,6 +1314,7 @@ body {
   }
 
   .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     padding-left: 0;
   }
 
