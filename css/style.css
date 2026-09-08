@@ -136,7 +136,7 @@ body {
 }
 
 .site-subtitle {
-  font-family: var(--font-serif);
+  font-family: var(--font-gothuc);
   font-size: 1.35rem;
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -246,7 +246,7 @@ body {
 }
 
 .nav-text {
-  font-family: var(--font-serif);
+  font-family: var(--font-gothic);
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.em;
