@@ -39,6 +39,7 @@ body {
    見開きレイアウト
    ========================================== */
 .book-spread {
+  /* background-color: #8f98b3; */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -723,6 +724,11 @@ body {
   text-underline-offset: 0.08em;
 }
 
+.card-tag-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 
 /* カードグリッド */
 .cards-grid {
@@ -782,7 +788,7 @@ body {
 
 .detail-card-number {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   letter-spacing: 0.12em;
   color: #555;
   margin-bottom: 0.25rem;
@@ -1158,17 +1164,20 @@ body {
 .cover-page .page {
   flex-basis: 380px;
   max-width: 480px;
+  height: 560px;
 }
 
 .cover-page .left-page {
   flex-basis: 420px;
   width: min(100%, 420px);
+  height: 560px;
 }
 
 .cover-page .right-page {
   flex-basis: 340px;
-  padding: 21px 14px 14px 21px;
+  padding: 21px 14px 0 21px;
   min-height: 520px;
+  /* border-top: 1px solid var(--ink-black); */
 }
 
 .cover-page .catalog-header {
@@ -1198,6 +1207,38 @@ body {
 .cover-page .site-subtitle {
   font-size: 19px;
   line-height: 1.45;
+}
+
+.cover-page .latest-records {
+  margin: 0 0 28px;
+}
+
+.cover-page .latest-records-heading {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.cover-page .latest-records-list {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cover-page .latest-record {
+  flex: 0 0 120px;
+  color: var(--ink-black);
+  text-decoration: none;
+}
+
+.cover-page .latest-record-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: grayscale(65%);
 }
 
 .cover-page .navigation {
@@ -1232,8 +1273,8 @@ body {
 }
 
 .cover-page .catalog-footer {
-  margin-top: 28px;
-  padding-top: 7px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .cover-page .colophon-line {
@@ -1251,10 +1292,29 @@ body {
 
   .cover-page .book-spread {
     gap: 49px;
+    align-items: center;
+  }
+
+  .cover-page .page {
+    flex: 0 1 420px;
+    width: min(100%, 460px);
+    max-width: 460px;
+    height: auto;
+  }
+
+  .cover-page .left-page {
+    width: 100%;
+    flex-basis: 460px;
+    height: auto;
   }
 
   .cover-page .right-page {
-    padding: 21px 7px 14px;
+    width: 100%;
+    flex-basis: 460px;
+  }
+
+  .cover-page .right-page {
+    padding: 21px 7px 0;
   }
 }
 

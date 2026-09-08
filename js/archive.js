@@ -127,17 +127,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const species = (item.species || "").split(/[、,]/)
       .map(value => value.trim())
       .filter(Boolean);
-    const renderGroup = (label, tags) => `
+    const renderGroup = (label, tags) => tags.length ? `
       <div class="card-tag-group">
         <span class="card-tag-label">${label}：</span>
         ${tags.map(tag => `
           <a href="archive.html?category=${encodeURIComponent(tag)}" class="card-tag" onclick="event.stopPropagation()">${tag}</a>
         `).join("、")}
       </div>
-    `;
+    ` : "";
+    const renderNameGroup = (label, value) => value ? `
+      <div class="card-tag-group">
+        <span class="card-tag-label">${label}：</span>
+        <span class="card-tag-value">${value}</span>
+      </div>
+    ` : "";
 
     return renderGroup("施設", [item.aquarium].filter(Boolean))
-      + renderGroup("生き物", species);
+      + renderGroup("生き物", species)
+      + renderNameGroup("水槽の名称", item.tank_name);
   }
 
   function renderDetail(item) {
