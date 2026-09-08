@@ -1210,7 +1210,7 @@ body {
 }
 
 .cover-page .latest-records {
-  margin: 0 0 28px;
+  margin: 0;
 }
 
 .cover-page .latest-records-heading {
@@ -1242,7 +1242,7 @@ body {
 }
 
 .cover-page .navigation {
-  margin-top: auto;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
