@@ -794,6 +794,12 @@ body {
 .is-detail-page .record-detail-summary .detail-title {
   display: block;
   clear: both;
+  margin-top: 0;
+  font-size: 2.2rem;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  text-shadow: var(--title-bleed);
+  -webkit-text-stroke: 0.95px currentColor;
 }
 
 .detail-card-number {
@@ -829,12 +835,6 @@ body {
   display: none;
 }
 
-.is-detail-page .record-detail-summary .detail-title {
-  margin-top: 0;
-  font-size: 2.2rem;
-  text-shadow: var(--title-bleed);
-  -webkit-text-stroke: 0.15px currentColor;
-}
 
 .is-detail-page .record-detail-content h1:first-child {
   display: none;
