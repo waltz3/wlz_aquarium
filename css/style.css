@@ -798,7 +798,7 @@ body {
   font-size: 2.2rem;
   font-family: var(--font-serif);
   font-weight: 900;
-  text-shadow: var(--title-bleed);
+  /* text-shadow: var(--title-bleed); */
   -webkit-text-stroke: 0.95px currentColor;
 }
 
