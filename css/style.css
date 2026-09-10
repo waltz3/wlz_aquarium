@@ -584,6 +584,16 @@ body {
   font-weight: 700;
 }
 
+.about-container .record-detail-content ul {
+  list-style-position: inside;
+  margin: 0;
+  padding-left: 0;
+}
+
+.about-container .record-detail-content li {
+  overflow-wrap: anywhere;
+}
+
 .archive-lead {
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -863,8 +873,28 @@ body {
 .record-detail-content {
   margin: 2rem 0 0;
   border-top: 1px solid var(--ink-black);
-  padding-top: 1rem;
+  padding-top: 0rem;
   line-height: 1.9;
+  overflow: visible;
+}
+
+.record-detail-content p,
+.record-detail-content ul,
+.record-detail-content ol,
+.record-detail-content blockquote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.record-detail-content ul,
+.record-detail-content ol {
+  padding-left: 0;
+  list-style-position: inside;
+  padding-top: 1rem;
+}
+
+.record-detail-content li {
+  overflow-wrap: anywhere;
 }
 
 .record-detail-content h1,
@@ -877,6 +907,26 @@ body {
   /* padding-bottom: 0.4rem; */
   /* text-shadow: var(--title-bleed); */
   -webkit-text-stroke: 0.15px currentColor;
+  margin-bottom: -0.6rem;
+  margin-top: 1.5rem;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.record-detail-content h1::before,
+.record-detail-content h2::before,
+.record-detail-content h3::before,
+.record-detail-content h4::before,
+.record-detail-content h5::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--ink-black);
+  box-shadow: 0 0 0.25px currentColor, 0 0 1.5px rgba(0, 0, 0, 0.18), 0 0 5px rgba(131, 211, 227, 0.28);
 }
 
 .random-container {
